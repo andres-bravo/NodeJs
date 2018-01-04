@@ -11,9 +11,17 @@ var clienteGitHub = new Cliente("api.github.com","443","https");
 console.log(clienteGitHub);
 console.log("host:", clienteGitHub.host);
 
-/*Aquí tendríamos que autenticarnos también.
+/*Implementando autenticación*/
+clienteGitHub.autenticacion("andres-bravo", "Arras1.2");
+
+/*Aquí tendríamos que autenticarnos también, aunque GitHub deja sin autenticación
 no hacemos respuesta = .... para no bloquear la ejecución en cambio ponermos un callback para 
-que la aplicación siga ejecutando*/
+que la aplicación siga ejecutando
 clienteGitHub.get("/users/andres-bravo", (respuesta)=> {
     console.log(respuesta);
-});
+});*/
+
+clienteGitHub.post("/repos/andres-bravo/hello-world/issues/2/comments",{
+        "body": "esto es una prueba"
+    },
+    (respuesta)=>console.log(respuesta));
